@@ -232,6 +232,12 @@ nodeSelector: {}
 # -- Values for the Tolerations
 tolerations: []
 
+# -- Ability to annotate the Deployment/Statefullset with annotations like a configmap reloader
+# deployment:
+#   annotations:
+#     reloader.stakater.com/auto: "true"
+deployment: {}
+
 # -- Values for the Affinity
 affinity: {}
 

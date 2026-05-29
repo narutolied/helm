@@ -9,6 +9,10 @@ metadata:
   name: {{ include "cryptpad-helm.fullname" . }}
   labels:
     {{- include "cryptpad-helm.labels" . | nindent 4 }}
+  {{- with .Values.deployment.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
