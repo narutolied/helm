@@ -50,6 +50,8 @@ config:
   # -- URL to reach your cryptpad
   # httpSafeOrigin: 'https://cryptpad.example.org'
 
+  maxUploadSize: 20 * 1024 * 1024
+
   ####################
   # Database Volumes #
   ####################

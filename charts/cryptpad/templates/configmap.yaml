@@ -35,9 +35,14 @@ data:
             adminKeys: [],
           {{- end}}
 
+          {{- if .Values.config.maxUploadSize }}
+            maxUploadSize: {{.Values.config.maxUploadSize}},
+          {{- else}}
+          {{- end}}
+
           {{- range $key, $value := .Values.config }}
-            {{- if and (or (ne $key "httpUnsafeOrigin") (ne $key "httpSafeOrigin")) (ne $key "adminKeys") }}
-              {{ $key }}: {{ $value | quote }},
+            {{- if and (or (ne $key "httpUnsafeOrigin") (ne $key "httpSafeOrigin")) (ne $key "adminKeys")  (ne $key "maxUploadSize")}}
+            {{ $key }}: {{ $value | quote }},
             {{- end }}
           {{- end }}
 
