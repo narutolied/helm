@@ -2,20 +2,20 @@
 
 CryptPad is a collaboration office suite that is end-to-end-encrypted and open-source.
 
-![Version: 0.0.22](https://img.shields.io/badge/Version-0.0.22-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
+![Version: 0.0.23](https://img.shields.io/badge/Version-0.0.23-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square)
 
 ## Installing the Chart
 
 Install via OCI Registry:
 ```bash
-helm install cryptpad oci://ghcr.io/cryptpad/helm/cryptpad --version 0.0.22
+helm install cryptpad oci://ghcr.io/cryptpad/helm/cryptpad --version 0.0.23
 ```
 
 Install via Repository:
 
 ```bash
 helm repo add cryptpad-github https://cryptpad.github.io/helm
-helm install cryptpad cryptpad-github/cryptpad --version 0.0.22
+helm install cryptpad cryptpad-github/cryptpad --version 0.0.23
 ```
 cd
 ## Signing
@@ -26,7 +26,7 @@ Example of how verify signature of helm:
   # Download and convert key from ASCII armor format to binary.
   curl https://xwiki-contrib.github.io/xwiki-helm/helm-charts.asc | gpg --dearmor > helm-charts.gpg
   # Verify thatthe signed chart:
-  helm fetch --verify cryptpad-github/cryptpad --version 0.0.22 --keyring helm-charts.gpg
+  helm fetch --verify cryptpad-github/cryptpad --version 0.0.23 --keyring helm-charts.gpg
 ```
 
 ### Configure and Customization
@@ -87,6 +87,7 @@ application_config:
 | config.taskPath | string | `"./data/tasks"` | Directory to store a list of scheduled tasks. |
 | config.verbose | bool | `false` | Enable verbose logging |
 | cpadConfig | string | `"/cryptpad/config/config.js"` | File to mount for the CPAD Configuration (`CPAD_CONF`) |
+| deployment | object | `{}` | Ability to annotate the Deployment/Statefullset with annotations like a configmap reloader deployment:   annotations:     reloader.stakater.com/auto: "true" |
 | enableEmbedding | bool | `false` | Allow documents and media be embedded on other websites. This will add an "Embed" option on the Share menu. |
 | extraContainers | list | `[]` | Additional sidecar containers. Rendered into `.spec.template.spec.containers` after the main container. |
 | extraEnv | list | `[]` | Additional environment variables for the main container (raw env entries, supports valueFrom). |
